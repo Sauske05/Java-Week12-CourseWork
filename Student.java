@@ -74,7 +74,17 @@ public class Student
     }
     
     public void display() {
-    System.out.println("Enrollment ID: " + get_enrollmentID());
+        if (dateOfEnrollment == "" || dateOfEnrollment == null) {
+        System.out.println("Date of Enrollment Value is missing!");
+        } 
+        else if (courseName == "" || courseName == null) {
+        System.out.println("Course Name is not mentioned!");
+        }
+        else if (enrollmentID == 0) {
+        System.out.println("Enrollment ID is not declared!");
+        }
+        else {
+        System.out.println("Enrollment ID: " + get_enrollmentID());
         System.out.println("Date of Birth: " + get_dateOfBirth());
         System.out.println("Course Name: " + get_courseName());
         System.out.println("Student Name: " + get_studentName());
@@ -82,12 +92,15 @@ public class Student
         System.out.println("Course Duration: " + get_courseDuration() + " months");
         System.out.println("Tuition Fee: " + get_tutionFee());
         System.out.println();
-        System.out.println();
+        System.out.println();}
     }
     public static void main(String[] args) {
-    Student student1 = new Student("08-22-2003", "Arun", 6, 100000);
-    Student student2 = new Student("08-21-2003", "Barun", 8, 100000);
+    Student student1 = new Student("08-22-2003","Arun", 6,100000);
+    //Student student2 = new Student("08-21-2003", "Barun", 8, 100000);
+    student1.set_dateofEnrollment("09-23-2023");
+    student1.set_courseName("Programming");
+    student1.set_enrollmentID(1234);
     student1.display();
-    student2.display();
+    //student2.display();
     }
 }

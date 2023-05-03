@@ -20,6 +20,7 @@ public class Regular extends Student
         // initialise instance variables
         super(dateOfBirth, studentName, courseDuration, tutionFee);
         super.set_courseName(courseName);
+        super.set_enrollmentID(enrollmentID);
         super.set_dateofEnrollment(dateOfEnrollment);
         this.numOfModules = numOfModules;
         this.numOfCreditHours = numOfCreditHours;
@@ -57,6 +58,7 @@ public class Regular extends Student
     double present_percentage = (daysPresent / (super.courseDuration * 30)) * 100;
     String message = "";
     if (present_percentage >= 80 & present_percentage <= 100) {
+        isGrantedScholarship = true;
     message = "A";
     }
     
