@@ -23,9 +23,9 @@ public class Dropout extends Student
         this.numOfRemainingModules = numOfRemainingModules;
         this.numOfMonthsAttended = numOfMonthsAttended;
         this.dateOfDropout = dateOfDropout;
-        super.set_courseName("");
-        super.set_enrollmentID(0);
-        super.set_dateofEnrollment("");
+        super.set_courseName(""); // can also pass parameter value using super.get_courseName(). 
+        super.set_enrollmentID(0); //same for these
+        super.set_dateofEnrollment("");//same
         this.remainingAmount = 0;
         this.hasPaid = false;
         
@@ -53,17 +53,25 @@ public class Dropout extends Student
     return hasPaid;
     }
     
-    public double billsPayble () {
-    remainingAmount = (courseDuration*30 - numOfMonthsAttended) * tutionFee;
+    public void billsPayble () {
+    String message = "";
+    this.remainingAmount = (courseDuration - numOfMonthsAttended) * tutionFee;
+    // the way question is worded is dumb imo. Need to confirm this. I assumed this a bit!
+    if (this.remainingAmount == 0) {
     hasPaid = true;
-    return remainingAmount;
-    }
+    message = "All bills cleared by the student";
+} else {
+    message = "The total amount of bills needed to be paid is" + "" + this.remainingAmount;}
     
+    System.out.println(message);
+    }
+    // removeStudent() also can be written with a return type of void.
     public String removeStudent() {
-    String message = "Clear Bill Mofo!";
+    String message = "All Bills Cleared Sucessfully!";
     // date of birth, coursename, student name, date of enrollment, course duration, tuition fee and date of drop out
     // enrollment id, number of remaining modules, number of months attended and remaining amount to 0
     if (hasPaid = true) {
+    // need to initialise student instance variables of Student as protected else we cant modify it here! We can get around by using setter but the question doesn't says introduce setters for all vals. 
     dateOfBirth = "";
     courseName = "";
     studentName = "";
@@ -83,20 +91,15 @@ public class Dropout extends Student
     }
     
     public void display() {
-    System.out.println("The enrollmentId of the Student is" + enrollmentID);
-    System.out.println("The date of birth of the Student is" + dateOfBirth);
-    System.out.println("The courseName is" + courseName);
-    System.out.println("The studentName is" + studentName);
-    System.out.println("The course duration is" + courseDuration);
-    System.out.println("The tutionFee is" + tutionFee);
-    System.out.println("The number of remaining modules is" + numOfRemainingModules);
-    System.out.println("The number of months attended is" + numOfMonthsAttended);
-    System.out.println("The date of dropout was" + dateOfDropout);
+    super.display();
+    System.out.println("The number of remaining modules is" + " "+get_numOfRemainingModules());
+    System.out.println("The number of months attended is" +" "+ get_numOfMonthsAttended());
+    System.out.println("The date of dropout was" +" "+ get_dateOfDropout());
     }
     
-    public static void main(String [] args) {
+    //public static void main(String [] args) {
         // String dateOfBirth, String studentName, int courseDuration, int tutionFee, int numOfRemainingModules, int numOfMonthsAttended, String dateOfDropout
-    Dropout drp = new Dropout("22-07-2004", "Barun", 8, 70000, 4, 7, "21-01-2023");
-    drp.display();
-    }
+    //Dropout drp = new Dropout("22-07-2004", "Barun", 8, 70000, 4, 7, "21-01-2023");
+    //drp.display();
+    //}
 }

@@ -54,11 +54,15 @@ public class Regular extends Student
         this.isGrantedScholarship = isGrantedScholarship;
     }
 
-    public String presentPercentage(double daysPresent) {
-    double present_percentage = (daysPresent / (super.courseDuration * 30)) * 100;
+    public void presentPercentage(double daysPresent) {
+    double present_percentage = (daysPresent / (super.get_courseDuration() * 30)) * 100;
     String message = "";
+    this.daysPresent = daysPresent;
+    if (daysPresent > (get_courseDuration() * 30)) {
+    System.out.println("You are from future homie!");
+    } else {
     if (present_percentage >= 80 & present_percentage <= 100) {
-        isGrantedScholarship = true;
+        setIsGrantedScholarship(true);
     message = "A";
     }
     
@@ -75,11 +79,13 @@ public class Regular extends Student
     } 
     
     else { message = "E";}
-    return message;
+    System.out.println("The student's attendence is" +" "+ present_percentage + "%. So, the student's grade is"+ " "+message);
+}
+    
     }
     
     public void grantCertificate(String courseName, int enrollmentId, String dateOfEnrollment) {
-     System.out.print(super.studentName + " has graduated from " + courseName + " with enrollment ID " + enrollmentId + " and enrollment date " + dateOfEnrollment + ".");
+     System.out.print(super.get_studentName() + " has graduated from " + get_courseName() + " with enrollment ID " + get_enrollmentID() + " and enrollment date " + get_dateofEnrollment() + ".");
     if (isGrantedScholarship) {
         System.out.print(" The scholarship has been granted.");
     }
@@ -93,13 +99,13 @@ public class Regular extends Student
     System.out.println("Days present: " + this.daysPresent);
 }
 
-public static void main(String[] args) {
-Regular reg = new Regular("22-09-2003", "Sasuke", 6, 100000, 3, 4, 140, "21-07-2022", "Programming", 1234);
-System.out.println(reg.presentPercentage(reg.daysPresent));
-System.out.println();
-reg.grantCertificate(reg.courseName, reg.enrollmentID, reg.dateOfEnrollment);
-System.out.println();
-reg.display();
+//public static void main(String[] args) {
+//Regular reg = new Regular("22-09-2003", "Sasuke", 6, 100000, 3, 4, 140, "21-07-2022", "Programming", 1234);
+//System.out.println(reg.presentPercentage(reg.daysPresent));
+//System.out.println();
+//reg.grantCertificate(reg.courseName, reg.enrollmentID, reg.dateOfEnrollment);
+//System.out.println();
+//reg.display();
 
-}
+//}
 }

@@ -8,11 +8,11 @@
 public class Student
 {
     // instance variables - replace the example below with your own
-    public String studentName,dateOfBirth;
-    public int tutionFee,courseDuration;
-    public String dateOfEnrollment = "";
-    public String courseName ="";
-    public int enrollmentID = 0;
+    protected String studentName,dateOfBirth;
+    protected int tutionFee,courseDuration;
+    protected String dateOfEnrollment = "";
+    protected String courseName ="";
+    protected int enrollmentID = 0;
     /**
      * Constructor for objects of class Student
      */
@@ -74,7 +74,7 @@ public class Student
     }
     
     public void display() {
-        if (dateOfEnrollment == "" || dateOfEnrollment == null) {
+        if (dateOfEnrollment.equals("") || dateOfEnrollment == null) {
         System.out.println("Date of Enrollment Value is missing!");
         } 
         else if (courseName == "" || courseName == null) {
@@ -94,10 +94,11 @@ public class Student
         System.out.println();
         System.out.println();}
     }
+    //Dont write the static void main method!!!!! Just for check.
     public static void main(String[] args) {
     Student student1 = new Student("08-22-2003","Arun", 6,100000);
     //Student student2 = new Student("08-21-2003", "Barun", 8, 100000);
-    student1.set_dateofEnrollment("09-23-2023");
+    student1.set_dateofEnrollment("2023-22-08");
     student1.set_courseName("Programming");
     student1.set_enrollmentID(1234);
     student1.display();
